@@ -1,1 +1,452 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фабрика Единорогов — Инкубатор нового поколения</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg-light: #f5f7fb;
+      --bg-dark: #0f1729;
+      --card-light: #ffffff;
+      --card-dark: rgba(15, 23, 41, 0.75);
+      --text-light: #0f1729;
+      --text-muted-light: #44506b;
+      --text-dark: #e5ecff;
+      --accent: #7f5af0;
+      --accent-soft: rgba(127, 90, 240, 0.12);
+      --border-light: rgba(15, 23, 41, 0.08);
+      --border-dark: rgba(229, 236, 255, 0.12);
+      --shadow-light: 0 25px 60px -20px rgba(15, 23, 42, 0.25);
+      --shadow-dark: 0 25px 60px -20px rgba(15, 23, 42, 0.6);
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-light);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+      }
+    }
+
+    header {
+      background: radial-gradient(circle at top left, rgba(127, 90, 240, 0.25), transparent 55%),
+                  linear-gradient(135deg, rgba(127, 90, 240, 0.85), rgba(79, 209, 197, 0.75));
+      color: #ffffff;
+      padding: 120px clamp(24px, 8vw, 120px) 140px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 20%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
+      filter: blur(60px);
+    }
+
+    .hero {
+      position: relative;
+      max-width: 980px;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.15);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 26px;
+      backdrop-filter: blur(4px);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5.2vw, 4.2rem);
+      margin: 0 0 24px;
+      line-height: 1.05;
+    }
+
+    .hero p {
+      max-width: 680px;
+      font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+      margin-bottom: 34px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 42px;
+    }
+
+    .hero-stat-card {
+      padding: 22px 26px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-stat-card strong {
+      display: block;
+      font-size: 2.05rem;
+      margin-bottom: 8px;
+    }
+
+    main {
+      margin-top: -60px;
+      position: relative;
+      z-index: 2;
+      padding: 0 clamp(24px, 7vw, 140px) 120px;
+    }
+
+    .card {
+      background: var(--card-light);
+      border-radius: 28px;
+      padding: clamp(32px, 4vw, 52px);
+      margin-bottom: 34px;
+      box-shadow: var(--shadow-light);
+      border: 1px solid var(--border-light);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .card {
+        background: var(--card-dark);
+        box-shadow: var(--shadow-dark);
+        border: 1px solid var(--border-dark);
+      }
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: var(--text-muted-light);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      p {
+        color: rgba(229, 236, 255, 0.85);
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    ul li {
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+      color: var(--text-light);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      ul li {
+        color: rgba(229, 236, 255, 0.9);
+      }
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .metric-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .metric-card {
+      padding: 20px 24px;
+      border-radius: 24px;
+      background: var(--accent-soft);
+    }
+
+    .metric-card strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    .distribution {
+      border-radius: 24px;
+      padding: 24px 28px;
+      background: rgba(127, 90, 240, 0.08);
+    }
+
+    .distribution h4 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    footer {
+      padding: 60px clamp(24px, 7vw, 120px);
+      color: rgba(255, 255, 255, 0.85);
+      background: linear-gradient(135deg, rgba(15, 27, 60, 0.95), rgba(31, 70, 120, 0.9));
+    }
+
+    footer h2 {
+      margin: 0 0 16px;
+      font-size: 2rem;
+      color: inherit;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 680px;
+    }
+
+    .keywords {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .keyword {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+    }
+
+    .split-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding-top: 100px;
+        padding-bottom: 110px;
+      }
+
+      .hero-stats {
+        margin-top: 32px;
+      }
+
+      main {
+        margin-top: -40px;
+        padding-bottom: 80px;
+      }
+
+      footer {
+        padding: 48px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <div class="badge">Белая бумага</div>
+      <h1>Фабрика Единорогов</h1>
+      <p>Инкубатор нового поколения для эпохи искусственного интеллекта. Мы создаём экосистему, которая превращает гибко мыслящих основателей в лидеров рынка и запускает самоподдерживающийся маховик роста технологических компаний.</p>
+      <div class="hero-stats">
+        <div class="hero-stat-card">
+          <strong>100+</strong>
+          проектов в пайплайне за первый год
+        </div>
+        <div class="hero-stat-card">
+          <strong>$1М+</strong>
+          месячной прибыли у проектов уровня «А»
+        </div>
+        <div class="hero-stat-card">
+          <strong>50/50</strong>
+          прозрачная партнёрская модель распределения прибыли
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1. Резюме</h2>
+      <p>«Фабрика Единорогов» — технологический инкубатор, созданный для системного поиска и выращивания компаний-«единорогов» в условиях стремительного развития ИИ. Мы отбираем основателей с гибким мышлением, проводим их через жесткую воронку отбора и при поддержке менторов, комьюнити и инфраструктуры доводим проекты до стабильной прибыли в $1+ млн в месяц.</p>
+      <p><strong>Ключевая инновация:</strong> модель полного партнёрства. Прибыль успешных проектов делится пополам между основателем и инкубатором, а доля инкубатора реинвестируется в экосистему, усиливая маховик роста.</p>
+      <p><strong>Цель первого года:</strong> обработать и запустить 100+ проектов, вырастить 10+ компаний с прибылью $100k+/мес и вывести на рынок 1–5 проектов уровня «А».</p>
+    </section>
+
+    <section class="card">
+      <h2>2. Проблема: почему старые модели не работают в эпоху ИИ?</h2>
+      <ul>
+        <li><strong>Устаревший отбор:</strong> традиционные инкубаторы оценивают готовые навыки, а не способность к быстрому обучению и адаптации.</li>
+        <li><strong>Высокий порог входа:</strong> талантливые команды не проходят «долину смерти» от идеи до MVP без ресурсов и поддержки.</li>
+        <li><strong>Неэффективное финансирование:</strong> классические модели медлительны, непрозрачны и не стимулируют быстрый результат.</li>
+        <li><strong>Отсутствие экосистемы:</strong> проекты развиваются в изоляции, лишаясь тестеров, менторов и сообщества.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>3. Решение: модель «Фабрики Единорогов»</h2>
+      <p>Мы создали гибридную модель data-driven инкубатора и сплочённого DAO-комьюнити, где гибкость ума становится ключевым активом основателя.</p>
+      <div class="grid two">
+        <div>
+          <h3>Как это работает</h3>
+          <ul>
+            <li><strong>Воронка отбора:</strong> многоэтапный фильтр, отсекающий негибкие команды. Повторный заход возможен в следующем цикле.</li>
+            <li><strong>MVP-марафон:</strong> интенсив в разработке продукта. За каждый этап команда получает микрогранты (например, $200), поддерживающие мотивацию.</li>
+            <li><strong>Финансирование по результатам:</strong> инвестиции поступают после подтверждения жизнеспособности продукта.</li>
+            <li><strong>Партнёрская прибыль:</strong> при выходе на стабильную прибыль доход делится 50/50 между основателем и инкубатором.</li>
+          </ul>
+        </div>
+        <div class="distribution">
+          <h4>Философия</h4>
+          <p>Мы опираемся на данные, скорость и справедливое партнёрство. Каждая успешная компания усиливает экосистему, ускоряя рост следующего поколения команд.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4. Механика и взаимодействие</h2>
+      <div class="grid two">
+        <div>
+          <h3>Путь основателя</h3>
+          <ul>
+            <li><strong>Вход:</strong> подача заявки или участие в хакатоне.</li>
+            <li><strong>Отбор:</strong> серия тестовых заданий и интервью на скорость обучения.</li>
+            <li><strong>Марафон:</strong> разработка MVP с поддержкой ментора и комьюнити.</li>
+            <li><strong>Запуск и рост:</strong> получение финансирования, выход на рынок и масштабирование.</li>
+            <li><strong>Партнёрство:</strong> распределение прибыли после достижения profitability.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Что предоставляет инкубатор</h3>
+          <ul>
+            <li><strong>Финансирование:</strong> поэтапные гранты и крупные инвестиции по результатам.</li>
+            <li><strong>Менторство (15% доли):</strong> персональный куратор, контролирующий дедлайны и стратегию.</li>
+            <li><strong>Комьюнити (10% доли):</strong> доступ к тестировщикам, первой аудитории и нетворкингу.</li>
+            <li><strong>Инфраструктура:</strong> финансовая и юридическая поддержка на всех стадиях.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5. Экономическая модель и распределение фондов</h2>
+      <div class="grid two">
+        <div>
+          <h3>5.1. Распределение долей в успешном проекте</h3>
+          <p>Для проектов уровня «А» действует модель 50/50: половина прибыли остаётся основателю, половина направляется в инкубатор и далее распределяется внутри экосистемы через Фонд Распределения.</p>
+          <ul>
+            <li><strong>30%</strong> от доли инкубатора — вознаграждение менторам и кураторам.</li>
+            <li><strong>50%</strong> — инвесторам (донаторам) за счёт краудфандинга.</li>
+            <li><strong>20%</strong> — фонд развития экосистемы: хакатоны, поиск талантов, маркетинг, награды для комьюнити.</li>
+          </ul>
+          <div class="distribution">
+            <h4>Пример прибыли $800k/мес</h4>
+            <p><strong>Основатель:</strong> $400k.</p>
+            <p><strong>Инкубатор:</strong> $400k, из них $120k — менторам, $200k — инвесторам, $80k — экосистеме.</p>
+          </div>
+        </div>
+        <div>
+          <h3>5.2. Распределение стартовых инвестиций ($500k)</h3>
+          <ul>
+            <li><strong>50% ($250k)</strong> — поддержка проектов:
+              <div class="split-list">
+                <span>20% ($50k) — посевные гранты</span>
+                <span>5% ($12.5k) — менторство</span>
+                <span>75% ($187.5k) — вливание в MVP</span>
+              </div>
+            </li>
+            <li><strong>15% ($75k)</strong> — поиск талантов (50/50 гранты/хакатоны и хантинг).</li>
+            <li><strong>10% ($50k)</strong> — резервный фонд.</li>
+            <li><strong>8% ($40k)</strong> — развитие комьюнити.</li>
+            <li><strong>17% ($85k)</strong> — внутренние нужды: образование команды, ИИ-инфраструктура, аудит.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>6. Ключевые метрики и цели (дорожная карта)</h2>
+      <p>Фокус на масштабируемости и качестве входящих проектов в течение первого года.</p>
+      <div class="metric-cards">
+        <div class="metric-card">
+          <strong>100+ запусков</strong>
+          успешных проектов через воронку и марафон.
+        </div>
+        <div class="metric-card">
+          <strong>40+ проектов уровня C</strong>
+          достигают прибыли свыше $10k в месяц.
+        </div>
+        <div class="metric-card">
+          <strong>10+ проектов уровня B</strong>
+          выходят на $100k+ прибыли ежемесячно.
+        </div>
+        <div class="metric-card">
+          <strong>1–5 единорогов</strong>
+          меняют правила игры с $1M+ прибыли в месяц.
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>7. Заключение и философия</h2>
+      <p>«Фабрика Единорогов» — ответ на вызовы эпохи ИИ. Мы убеждены, что будущее принадлежит основателям с гибкостью ума, стратегическим мышлением и скоростью обучения. Наша data-driven модель, построенная на скорости, партнёрстве и справедливом распределении ценности, задаёт новую парадигму венчурного инвестирования и создания технологических компаний мирового уровня.</p>
+    </section>
+  </main>
+
+  <footer>
+    <h2>Ключевые слова</h2>
+    <p>Инкубатор нового поколения, который превращает идеи в масштабируемый бизнес и обеспечивает честное партнёрство между основателями, менторами и инвесторами.</p>
+    <div class="keywords">
+      <span class="keyword">Инкубатор</span>
+      <span class="keyword">Единорог</span>
+      <span class="keyword">ИИ</span>
+      <span class="keyword">MVP</span>
+      <span class="keyword">Марафон</span>
+      <span class="keyword">Гибкость ума</span>
+      <span class="keyword">Краудфандинг</span>
+      <span class="keyword">DAO</span>
+      <span class="keyword">Распределение прибыли 50/50</span>
+      <span class="keyword">Экосистема</span>
+      <span class="keyword">Воронка отбора</span>
+      <span class="keyword">Менторство</span>
+      <span class="keyword">Комьюнити</span>
+    </div>
+  </footer>
+</body>
+</html>
 
