@@ -476,6 +476,233 @@ ul {
   margin-top: 0.6rem;
 }
 
+.chart-card {
+  background: rgba(8, 13, 31, 0.8);
+  border: 1px solid rgba(140, 97, 255, 0.25);
+  border-radius: 18px;
+  padding: 1.6rem;
+  display: grid;
+  gap: 1rem;
+  box-shadow: 0 16px 36px rgba(7, 11, 27, 0.4);
+}
+
+.chart-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.chart-card ul,
+.chart-card ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.chart-card span {
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.chart-card strong {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 0.35rem;
+}
+
+.chart--bars li {
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+
+.chart--bars li::before,
+.chart--bars li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.6rem;
+  border-radius: 999px;
+}
+
+.chart--bars li::before {
+  right: 0;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.chart--bars li::after {
+  width: var(--bar-percent);
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  box-shadow: 0 0 15px rgba(29, 229, 191, 0.3);
+}
+
+.chart--steps ol {
+  counter-reset: launch-step;
+  gap: 1.2rem;
+}
+
+.chart--steps li {
+  position: relative;
+  padding-left: 3.2rem;
+}
+
+.chart--steps li::before {
+  counter-increment: launch-step;
+  content: counter(launch-step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: -0.15rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(140, 97, 255, 0.4), rgba(29, 229, 191, 0.4));
+  color: var(--text);
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 18px rgba(140, 97, 255, 0.35);
+}
+
+.chart--steps li span {
+  font-size: 1rem;
+  color: var(--accent-light);
+}
+
+.chart--steps li p {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+}
+
+.donut-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-chart {
+  width: 140px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--donut-a, rgba(140, 97, 255, 0.8)) 0 30%,
+    var(--donut-b, rgba(29, 229, 191, 0.8)) 30% 80%,
+    var(--donut-c, rgba(111, 165, 255, 0.8)) 80% 100%
+  );
+  position: relative;
+  box-shadow: inset 0 0 18px rgba(6, 10, 27, 0.6), 0 18px 36px rgba(7, 11, 29, 0.4);
+}
+
+.donut-chart::before {
+  content: "";
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  background: rgba(8, 13, 31, 0.95);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.45);
+}
+
+.chart-legend {
+  display: grid;
+  gap: 0.6rem;
+  min-width: 180px;
+}
+
+.chart-legend li {
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: 0.9rem 1fr;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.chart-legend li::before {
+  content: "";
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 6px;
+  background: var(--legend-color, var(--accent));
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.chart--timeline {
+  gap: 1.4rem;
+}
+
+.chart--timeline ol {
+  position: relative;
+  padding-left: 2rem;
+  gap: 1.6rem;
+}
+
+.chart--timeline ol::before {
+  content: "";
+  position: absolute;
+  left: 0.55rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), rgba(29, 229, 191, 0.4));
+}
+
+.chart--timeline li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.chart--timeline li::before {
+  content: "";
+  position: absolute;
+  left: -1.6rem;
+  top: 0.35rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  box-shadow: 0 0 0 5px rgba(29, 229, 191, 0.18);
+}
+
+.chart--timeline li span {
+  display: block;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.chart--timeline li p {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+}
+
+.chart--progress li {
+  position: relative;
+  padding-bottom: 1.3rem;
+}
+
+.chart--progress li::before,
+.chart--progress li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.55rem;
+  border-radius: 999px;
+}
+
+.chart--progress li::before {
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.chart--progress li::after {
+  width: calc(var(--progress, 0) * 100%);
+  background: linear-gradient(90deg, rgba(29, 229, 191, 0.9), rgba(140, 97, 255, 0.9));
+  box-shadow: 0 0 14px rgba(29, 229, 191, 0.28);
+}
+
 .quote-card {
   background: rgba(10, 16, 34, 0.75);
   border-left: 3px solid var(--accent);
