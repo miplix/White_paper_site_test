@@ -320,32 +320,6 @@ ul {
   color: var(--accent-secondary);
 }
 
-.list--numbered {
-  counter-reset: numbered;
-  display: grid;
-  gap: 0.8rem;
-  margin: 1.2rem 0;
-}
-
-.list--numbered li {
-  position: relative;
-  padding-left: 2.4rem;
-  margin: 0;
-  color: var(--text-muted);
-}
-
-.list--numbered li::before {
-  counter-increment: numbered;
-  content: counter(numbered, decimal-leading-zero);
-  position: absolute;
-  left: 0;
-  top: 0.1rem;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--accent-secondary);
-  letter-spacing: 0.08em;
-}
-
 .list--check li,
 .list--dash li {
   position: relative;
@@ -640,20 +614,16 @@ ul {
 
 .chart--steps li {
   position: relative;
-  padding-left: 3rem;
+  padding-left: 1.6rem;
 }
 
 .chart--steps li::before {
-  content: "";
+  content: "•";
   position: absolute;
   left: 0;
-  top: 0.2rem;
-  width: 1.35rem;
-  height: 1.35rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(140, 97, 255, 0.5), rgba(29, 229, 191, 0.6));
-  box-shadow: 0 0 18px rgba(140, 97, 255, 0.35);
-  border: 2px solid rgba(12, 18, 41, 0.8);
+  top: 0.25rem;
+  font-size: 1.1rem;
+  color: var(--accent-secondary);
 }
 
 .chart-step__title {
