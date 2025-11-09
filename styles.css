@@ -365,6 +365,28 @@ ul {
   border-radius: 999px;
 }
 
+.list--nested {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.65rem;
+  padding-left: 1.4rem;
+}
+
+.list--nested li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: var(--text-muted);
+}
+
+.list--nested li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-secondary);
+  font-weight: 600;
+}
+
 .diagram {
   background: rgba(11, 18, 41, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
