@@ -701,54 +701,6 @@ ul {
   box-shadow: 0 0 14px rgba(29, 229, 191, 0.28);
 }
 
-.chart--journey ul {
-  position: relative;
-  padding-left: 2rem;
-  gap: 1.4rem;
-}
-
-.chart--journey ul::before {
-  content: "";
-  position: absolute;
-  left: 0.55rem;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, rgba(140, 97, 255, 0.6), rgba(29, 229, 191, 0.35));
-}
-
-.chart--journey li {
-  position: relative;
-  padding-left: 1.2rem;
-}
-
-.chart--journey li::before {
-  content: "";
-  position: absolute;
-  left: -1.7rem;
-  top: 0.4rem;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 50%;
-  background: rgba(29, 229, 191, 0.85);
-  box-shadow: 0 0 0 6px rgba(29, 229, 191, 0.15);
-}
-
-.chart--journey li span {
-  display: block;
-  font-weight: 600;
-  color: var(--accent-light);
-}
-
-.chart--journey li strong {
-  color: var(--text);
-}
-
-.chart--journey li p {
-  margin: 0.4rem 0 0;
-  color: var(--text-muted);
-}
-
 .quote-card {
   background: rgba(10, 16, 34, 0.75);
   border-left: 3px solid var(--accent);
