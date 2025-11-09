@@ -476,6 +476,45 @@ ul {
   margin-top: 0.6rem;
 }
 
+.formula {
+  background: rgba(6, 11, 26, 0.88);
+  border: 1px solid rgba(29, 229, 191, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  border-radius: 18px;
+  padding: 1.6rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.formula__body {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.2rem;
+  background: rgba(8, 16, 38, 0.9);
+  border-radius: 14px;
+  border: 1px solid rgba(140, 97, 255, 0.25);
+}
+
+.formula__expression {
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.formula__highlight {
+  color: var(--accent-secondary);
+}
+
+.formula ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  color: var(--text-muted);
+}
+
 .chart-card {
   background: rgba(8, 13, 31, 0.8);
   border: 1px solid rgba(140, 97, 255, 0.25);
@@ -673,32 +712,6 @@ ul {
 .chart--timeline li p {
   margin: 0.35rem 0 0;
   color: var(--text-muted);
-}
-
-.chart--progress li {
-  position: relative;
-  padding-bottom: 1.3rem;
-}
-
-.chart--progress li::before,
-.chart--progress li::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 0.55rem;
-  border-radius: 999px;
-}
-
-.chart--progress li::before {
-  right: 0;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.chart--progress li::after {
-  width: calc(var(--progress, 0) * 100%);
-  background: linear-gradient(90deg, rgba(29, 229, 191, 0.9), rgba(140, 97, 255, 0.9));
-  box-shadow: 0 0 14px rgba(29, 229, 191, 0.28);
 }
 
 .quote-card {
