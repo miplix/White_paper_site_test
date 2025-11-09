@@ -551,6 +551,63 @@ ul {
   margin-top: 0.35rem;
 }
 
+.chart--table {
+  gap: 1.4rem;
+}
+
+.chart-table {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.3rem;
+}
+
+.chart-table__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(12, 18, 41, 0.75);
+  border: 1px solid rgba(29, 229, 191, 0.18);
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.chart-table__row strong {
+  margin: 0;
+  color: var(--accent-secondary);
+}
+
+.chart-table__nested {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding-left: 1.4rem;
+  display: grid;
+  gap: 0.55rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.chart-table__nested li::before {
+  content: "•";
+  margin-right: 0.5rem;
+  color: var(--accent-secondary);
+}
+
+.chart-table__nested li {
+  display: flex;
+  align-items: flex-start;
+}
+
+.chart-table p {
+  margin: 0.6rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
 .chart--bars li {
   position: relative;
   padding-bottom: 1.25rem;
